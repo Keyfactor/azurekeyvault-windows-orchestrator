@@ -104,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Doc\AKV AnyAgent Configuration.docx" />
+    <None Include="Doc\Configuration.docx" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
