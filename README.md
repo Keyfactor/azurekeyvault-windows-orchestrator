@@ -15,7 +15,7 @@ In Keyfactor Command create a new Certificate Store Type similar to the one belo
 - **Needs Server, Blueprint Allowed, Requires Store Password, Supports Entry Password** – All unchecked as shown
 - **Supports Custom Alias** – Optional. Not used.
 - **Use PowerShell** – Unchecked
-- **Store PathType** – Freeform (user will enter the the location of the store). Format =\&gt; [_VaultName_].vault.azure.net. See &quot;VaultName&quot; under &quot;Custom Parameters&quot; below.
+- **Store PathType** – Freeform (user will enter the the location of the store). Format =\> [_VaultName_].vault.azure.net. See &quot;VaultName&quot; under &quot;Custom Parameters&quot; below.
 - **Private Keys** – Required (a certificate in a Azure Key Vault will contain a private key)
 - **PFX Password Style** – Default
 - **Job Types** – Inventory, Add, and Remove are the 3 job types implemented by this AnyAgent
@@ -30,7 +30,7 @@ In Keyfactor Command create a new Certificate Store Type similar to the one belo
 
 **1a. Adding Custom Parameters**
 
-Next to the parameters listbox in the Certificate Store Types dialog, click the \&lt;ADD\&gt; button. You should see the dialog below, with the values for TenantId filled in:
+Next to the parameters listbox in the Certificate Store Types dialog, click the \<ADD\> button. You should see the dialog below, with the values for TenantId filled in:
 
 ![](Images/Image2.png)
 
@@ -47,27 +47,27 @@ Open the Keyfactor Windows Agent Configuration Wizard and perform the tasks as i
 
 ![](Images/Image3.png)
 
-- Click **\&lt;Next\&gt;**
+- Click **\<Next\>**
 
 ![](Images/Image4.png)
 
-- If you have configured the agent service previously, you should be able to skip to just click **\&lt;Next\&gt;.** Otherwise, enter the service account Username and Password you wish to run the Keyfactor Windows Agent Service under, click **\&lt;Update Windows Service Account\&gt;** and click **\&lt;Next\&gt;.**
+- If you have configured the agent service previously, you should be able to skip to just click **\<Next\>.** Otherwise, enter the service account Username and Password you wish to run the Keyfactor Windows Agent Service under, click **\<Update Windows Service Account\>** and click **\<Next\>.**
 
 ![](Images/Image5.png)
 
-- If you have configured the agent service previously, you should be able to skip to just re-enter the password to the service account the agent service will run under, click **\&lt;Validate Keyfactor Connection\&gt;** and then **\&lt;Next\&gt;.**
+- If you have configured the agent service previously, you should be able to skip to just re-enter the password to the service account the agent service will run under, click **\<Validate Keyfactor Connection\>** and then **\<Next\>.**
 
 ![](Images/Image6.png)
 
-- Select the agent you are adding capabilities for (in this case, Azure Key Vault, and also select the specific capabilities (Inventory and Management in this example). Click **\&lt;Next\&gt;**.
+- Select the agent you are adding capabilities for (in this case, Azure Key Vault, and also select the specific capabilities (Inventory and Management in this example). Click **\<Next\>**.
 
 ![](Images/Image7.png)
 
-- For agent configuration purposes, this screen can be skipped by clicking **\&lt;Next\&gt;**.
+- For agent configuration purposes, this screen can be skipped by clicking **\<Next\>**.
 
 ![](Images/Image8.png)
 
-- For each AnyAgent implementation, check **Load assemblies containing extension modules from other location** , browse to the location of the compiled AnyAgent dlls, and click **\&lt;Validate Capabilities\&gt;**. Once all AnyAgents have been validated, click **\&lt;Apply Configuration\&gt;**.
+- For each AnyAgent implementation, check **Load assemblies containing extension modules from other location** , browse to the location of the compiled AnyAgent dlls, and click **\<Validate Capabilities\>**. Once all AnyAgents have been validated, click **\<Apply Configuration\>**.
 
 ![](Images/Image9.png)
 
@@ -75,14 +75,14 @@ Open the Keyfactor Windows Agent Configuration Wizard and perform the tasks as i
 
 **3. Create an AKV Certificate Store within Keyfactor Command**
 
-Navigate to Certificate Locations =\&gt; Certificate Stores within Keyfactor Command to add an Azure Key Vault certificate store. Below are the values that should be entered.
+Navigate to Certificate Locations =\> Certificate Stores within Keyfactor Command to add an Azure Key Vault certificate store. Below are the values that should be entered.
 
 ![](Images/Image10.png)
 
 - **Category** – Required. The Azure Key Vault category name must be selected.
 - **Container** – Optional. Select a container if utilized.
 - **Client Machine** – Required. The server name or IP Address where the agent is running.
-- **Store Path** – Required. Format =\&gt; [_VaultName_].vault.azure.net. See &quot;VaultName&quot; under &quot;Custom Parameters&quot; under _ **1. Create the New Certificate Store Type for the New AKV AnyAgent** _.
+- **Store Path** – Required. Format =\> [_VaultName_].vault.azure.net. See &quot;VaultName&quot; under &quot;Custom Parameters&quot; under _ **1. Create the New Certificate Store Type for the New AKV AnyAgent** _.
 - **TenantID** – Required **.** The ID of the Azure Active Directory (obtained from Properties menu of the subscription&#39;s Azure Active Directory – on this page it is called &quot;Directory ID&quot;)
 - **ResourceGroupName** – Required **.** The resource group name to which the Key Vault(s) belong. Can be found by clicking on the vault being managed and finding the &quot;Resource group&quot; at the top of the page.
 - **ApplicationId** – Required **.** The ID of the API Application you are using to communicate with the Azure Key Vault (obtained from the App registration found under the App registrations menu of the subscription&#39;s Azure Active Directory)
@@ -122,7 +122,7 @@ Navigate to Certificate Locations =\&gt; Certificate Stores within Keyfactor Com
   1. Use a URL like [https://localhost:44313](https://localhost:44313/), you won&#39;t need this
 4. Add a key to the API Application created in (2)
   1. Save this key, it disappears after navigating away from the save page
-5. Collect the Tenant ID (Also called Directory ID available under AAD -\&gt; Properties)
+5. Collect the Tenant ID (Also called Directory ID available under AAD -\> Properties)
 6. Collect the API Application ID (Details of the API Application Registration in AAD)
 7. Collect your Subscription ID (Details of your Subscription)
 8. Add your API as a principal to your Key Vault resource
