@@ -25,7 +25,7 @@ In Keyfactor Command create a new Certificate Store Type similar to the one belo
   - **ApplicationId** – Required **.** The ID of the API Application you are using to communicate with the Azure Key Vault (obtained from the App registration found under the App registrations menu of the subscription&#39;s Azure Active Directory)
   - **ClientSecret** – Required **.** The secret value given to you when you created a key for the API application.
   - **SubscriptionId** – Required **.** The ID of the subscription the Azure Key Vault(s) reside in (obtained from the Properties menu of the Subscription under the Subscriptions menu)
-  - **APIObjectId** – Required **.** The object ID of the API Application (obtained from the App registration found under the App registrations menu of the subscription&#39;s Azure Active Directory).
+  - **APIObjectId** – Required **.** The object ID of the API Application.  This is found by searching for your app in "Enterprise Applications" (Object Id).  This value may be different than the one found in "App Registrations".  Use the Enterprise one. 
   - **VaultName** – Required **.** The name of the vault being managed.
 
 **1a. Adding Custom Parameters**
@@ -88,7 +88,7 @@ Navigate to Certificate Locations =\> Certificate Stores within Keyfactor Comman
 - **ApplicationId** – Required **.** The ID of the API Application you are using to communicate with the Azure Key Vault (obtained from the App registration found under the App registrations menu of the subscription&#39;s Azure Active Directory)
 - **ClientSecret** – Required **.** The secret value given to you when you created a key for the API application.
 - **SubscriptionId** – Required **.** The ID of the subscription the Azure Key Vault(s) reside in (obtained from the Properties menu of the Subscription under the Subscriptions menu)
-- **APIObjectId** – Required **.** The object ID of the API Application (obtained from the App registration found under the App registrations menu of the subscription&#39;s Azure Active Directory).
+- **APIObjectId** – Required **.** The object ID of the API Application.  This is found by searching for your app in "Enterprise Applications" (Object Id).  This value may be different than the one found in "App Registrations".  Use the Enterprise one. 
 - **VaultName** – Required **.** The name of the vault being managed.
 - **Create Certificate Store** – Unchecked **.**
 - **Inventory Schedule** – Set a schedule for running Inventory jobs or none, if you choose not to schedule Inventory at this time.
@@ -146,3 +146,4 @@ Navigate to Certificate Locations =\> Certificate Stores within Keyfactor Comman
 - While Azure Key Vault will automatically renew certs from DigiCert, GlobalSign, and D-Trust, they only send emails for certificates from other certificate providers
 - You have the option to specify that the key pair be generated as non-exportable and generated inside an HSM. If you do this then you cannot distribute your certificate and private key to your app nodes as illustrated in the end-to-end flow example above.
 - The Azure App Services platform periodically polls your key vault to check if there is an updated certificate. If it finds one it reads the new one and rebinds SSL/TLS for your app.
+- There are 
