@@ -13,7 +13,7 @@ namespace AzureKeyVaultTests
     public class AssemblyTests
     {
         private const string folderPath = @"../../../../AzureKeyVault/bin/Debug/";
-        private const string assemblyName = @"Keyfactor.Extensions.AzureKeyVault.dll";
+        private const string assemblyName = @"Keyfactor.AnyAgent.AzureKeyVault.dll";
         [TestMethod]
         public void AssemblyReflectsIncludedJobTypes()
         {

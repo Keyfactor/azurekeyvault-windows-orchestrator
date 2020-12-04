@@ -7,8 +7,8 @@
     <ProjectGuid>{AE54486C-0CEB-4272-A8E0-CE674CAFC9FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Keyfactor.Extensions.AzureKeyVault</RootNamespace>
-    <AssemblyName>Keyfactor.Extensions.AzureKeyVault</AssemblyName>
+    <RootNamespace>Keyfactor.AnyAgent.AzureKeyVault</RootNamespace>
+    <AssemblyName>Keyfactor.AnyAgent.AzureKeyVault</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

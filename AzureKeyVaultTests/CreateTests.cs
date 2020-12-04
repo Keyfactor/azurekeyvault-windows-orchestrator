@@ -14,8 +14,8 @@ namespace AzureKeyVaultTests
         public void ReturnsTheCorrectJobClassAndStoreType()
         {
             var create = new Create();
-            create.GetJobClass().Should().Equals("Create");
-            create.GetStoreType().Should().Equals("AKV");
+            create.GetJobClass().Should().Be("Create");
+            create.GetStoreType().Should().Be("AKV");
         }
 
         [TestMethod]
