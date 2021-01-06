@@ -4,6 +4,7 @@ using Keyfactor.AnyAgent.AzureKeyVault;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.Protected;
+using Newtonsoft.Json;
 
 namespace AzureKeyVaultTests
 {
@@ -35,12 +36,8 @@ namespace AzureKeyVaultTests
         [TestMethod]
         public void JobReturnsFailureResponseAfterError() 
         {
-            var create = new Mock<Create>() { CallBase = true };
-            var mockAzClient = Mocks.GetMockAzureClient();
-            create.Protected().Setup<AzureClient>("AzClient").Returns(mockAzClient.Object);
-
             var config = Mocks.GetMockConfig();            
-            config.Store.Properties = new
+            config.Store.Properties = JsonConvert.SerializeObject(new
             {
                 VaultUrl = "https://test.vault",
                 TenantId = "8b74a908-b153-41dc-bfe5-3ea7b22b9678",
@@ -50,7 +47,11 @@ namespace AzureKeyVaultTests
                 VaultName = "wrongVaultName",
                 ResourceGroupName = "testResourceGroupName",
                 APIObjectId = Guid.NewGuid().ToString(),
-            };
+            });
+
+            var create = new Mock<Create>() { CallBase = true };
+            var mockAzClient = Mocks.GetMockAzureClient(config);
+            create.Protected().Setup<AzureClient>("AzClient").Returns(mockAzClient.Object);
 
             var result = create.Object.processJob(config, Mocks.GetSubmitInventoryDelegateMock().Object, Mocks.GetSubmitEnrollmentDelegateMock().Object, Mocks.GetSubmitDiscoveryDelegateMock().Object);
             result.Status.Should().Be(4);

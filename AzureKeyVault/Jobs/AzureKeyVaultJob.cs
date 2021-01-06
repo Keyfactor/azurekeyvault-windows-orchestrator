@@ -5,6 +5,7 @@ using CSS.Common.Logging;
 using Keyfactor.Platform.Extensions.Agents;
 using Keyfactor.Platform.Extensions.Agents.Delegates;
 using Keyfactor.Platform.Extensions.Agents.Interfaces;
+using Newtonsoft.Json;
 
 namespace Keyfactor.AnyAgent.AzureKeyVault
 {
@@ -27,7 +28,8 @@ namespace Keyfactor.AnyAgent.AzureKeyVault
         {
             try
             {
-                JobParameters = new AzureKeyVaultJobParameters((dynamic)config.Store.Properties);
+                var props = JsonConvert.DeserializeObject(config.Store.Properties as string);
+                JobParameters = new AzureKeyVaultJobParameters(props);
                 JobParameters.VaultURL = config.Store.StorePath;
                 AzClient = AzClient ?? new AzureClient(JobParameters);
             }
@@ -82,14 +84,13 @@ namespace Keyfactor.AnyAgent.AzureKeyVault
 
         public AzureKeyVaultJobParameters(dynamic source)
         {
-            VaultURL = source.GetType().GetProperty("VaultUrl").GetValue(source, null);
-            TenantId = source.GetType().GetProperty("TenantId").GetValue(source, null);
-            ClientSecret = source.GetType().GetProperty("ClientSecret").GetValue(source, null);
-            ApplicationId = source.GetType().GetProperty("ApplicationId").GetValue(source, null);
-            SubscriptionId = source.GetType().GetProperty("SubscriptionId").GetValue(source, null);
-            VaultName = source.GetType().GetProperty("VaultName").GetValue(source, null);;
-            ResourceGroupName = source.GetType().GetProperty("ResourceGroupName").GetValue(source, null); ;
-            APIObjectId = source.GetType().GetProperty("APIObjectId").GetValue(source, null); ;
+            APIObjectId = source.APIObjectId ?? null;
+            TenantId = source.TenantId ?? null;
+            ClientSecret = source.ClientSecret ?? null;
+            ApplicationId = source.ApplicationId ?? null;
+            SubscriptionId = source.SubscriptionId ?? null;
+            VaultName = source.VaultName ?? null;
+            ResourceGroupName = source.ResourceGroupName ?? null;
         }
 
         public interface IStoreProperties

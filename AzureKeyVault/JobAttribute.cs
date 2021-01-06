@@ -2,13 +2,13 @@
 
 namespace AzureKeyVault
 {
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public class JobAttribute : Attribute
     {
         private string jobClass { get; set; }
 
         public JobAttribute(string jobClass)
-        {            
+        {   
             this.jobClass = jobClass;
         }
 

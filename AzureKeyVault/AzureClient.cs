@@ -119,7 +119,7 @@ namespace Keyfactor.AnyAgent.AzureKeyVault
 
         public virtual async Task<IPage<CertificateItem>> GetCertificatesAsync()
         {
-            return await KeyVaultClient.GetCertificatesAsync(JobParameters.VaultName);
+            return await KeyVaultClient.GetCertificatesAsync(JobParameters.VaultURL);
         }
 
         public virtual async Task<CertificateBundle> GetCertificateAsync(string id)

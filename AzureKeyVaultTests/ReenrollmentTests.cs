@@ -4,12 +4,13 @@ using Keyfactor.AnyAgent.AzureKeyVault;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.Protected;
+using Newtonsoft.Json;
 
 namespace AzureKeyVaultTests
 {
     [TestClass]
     public class ReenrollmentTests
-    {        
+    {
         [TestMethod]
         public void ReturnsTheCorrectJobClassAndStoreType()
         {
@@ -21,7 +22,7 @@ namespace AzureKeyVaultTests
         [TestMethod]
         public void JobCallsCreateVault()
         {
-            var create = new Mock<Create>(){ CallBase = true };
+            var create = new Mock<Create>() { CallBase = true };
             var mockAzClient = Mocks.GetMockAzureClient();
             create.Protected().Setup<AzureClient>("AzClient").Returns(mockAzClient.Object);
             var result = create.Object.processJob(Mocks.GetMockConfig(), Mocks.GetSubmitInventoryDelegateMock().Object, Mocks.GetSubmitEnrollmentDelegateMock().Object, Mocks.GetSubmitDiscoveryDelegateMock().Object);
@@ -33,14 +34,14 @@ namespace AzureKeyVaultTests
         }
 
         [TestMethod]
-        public void JobReturnsFailureResponseAfterError() 
+        public void JobReturnsFailureResponseAfterError()
         {
             var create = new Mock<Create>() { CallBase = true };
             var mockAzClient = Mocks.GetMockAzureClient();
             create.Protected().Setup<AzureClient>("AzClient").Returns(mockAzClient.Object);
 
-            var config = Mocks.GetMockConfig();            
-            config.Store.Properties = new
+            var config = Mocks.GetMockConfig();
+            config.Store.Properties = JsonConvert.SerializeObject(new
             {
                 VaultUrl = "https://test.vault",
                 TenantId = "8b74a908-b153-41dc-bfe5-3ea7b22b9678",
@@ -50,12 +51,12 @@ namespace AzureKeyVaultTests
                 VaultName = "wrongVaultName",
                 ResourceGroupName = "testResourceGroupName",
                 APIObjectId = Guid.NewGuid().ToString(),
-            };
+            });
 
             var result = create.Object.processJob(config, Mocks.GetSubmitInventoryDelegateMock().Object, Mocks.GetSubmitEnrollmentDelegateMock().Object, Mocks.GetSubmitDiscoveryDelegateMock().Object);
             result.Status.Should().Be(4);
             result.Message.Should().Contain("The creation of the Azure Key Vault failed for an unknown reason. Check your job parameters and ensure permissions are correct.");
-            mockAzClient.Verify(az => az.CreateVault(), Times.Once());            
+            mockAzClient.Verify(az => az.CreateVault(), Times.Once());
         }
     }
 }
