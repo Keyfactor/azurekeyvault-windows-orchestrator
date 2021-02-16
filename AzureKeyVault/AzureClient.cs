@@ -10,8 +10,8 @@ using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
 namespace Keyfactor.AnyAgent.AzureKeyVault
 {
@@ -117,9 +117,19 @@ namespace Keyfactor.AnyAgent.AzureKeyVault
             return await KeyVaultClient.ImportCertificateAsync(JobParameters.VaultURL, name, uploadCollection, null);
         }
 
-        public virtual async Task<IPage<CertificateItem>> GetCertificatesAsync()
-        {
-            return await KeyVaultClient.GetCertificatesAsync(JobParameters.VaultURL);
+        public virtual async Task<IEnumerable<CertificateItem>> GetCertificatesAsync()
+        {            
+            var results = await KeyVaultClient.GetCertificatesAsync(JobParameters.VaultURL);
+            var certs = new List<CertificateItem>();
+            certs.AddRange(results);
+
+            while (!string.IsNullOrWhiteSpace(results.NextPageLink))
+            {                
+                results = KeyVaultClient.GetCertificatesNextAsync(results.NextPageLink).GetAwaiter().GetResult();
+                if (results != null) certs.AddRange(results);
+            }
+
+            return certs;
         }
 
         public virtual async Task<CertificateBundle> GetCertificateAsync(string id)
