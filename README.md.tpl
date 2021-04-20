@@ -1,5 +1,5 @@
 ﻿# {{ name }}
-## {{ integration_type }}
+## {{ integration_type | capitalize }}
 
 {{ description }}
 
