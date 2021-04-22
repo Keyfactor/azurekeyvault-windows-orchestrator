@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E303EF59-E043-4F25-A1C4-5C29DA23EFF9}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		AzureKeyVault.sln.licenseheader = AzureKeyVault.sln.licenseheader
 		integration-manifest.json = integration-manifest.json
 		LICENSE = LICENSE
 		README.md.tpl = README.md.tpl
