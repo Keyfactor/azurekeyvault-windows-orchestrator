@@ -2,6 +2,10 @@
 
 name: Keyfactor Extension - Release
 
+env:
+  project_folder: AzureKeyVault
+
+
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push
@@ -13,7 +17,7 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+ 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -94,7 +98,7 @@ jobs:
         if: ${{ success() }}
         run: |
            md ${{ github.workspace }}\zip\Keyfactor
-           Compress-Archive -Path ${{ github.workspace }}\PEMStoreSSH\bin\Release\*.dll,${{ github.workspace }}\PEMStoreSSH\bin\Release\config.json -DestinationPath ${{ github.workspace }}\zip\Keyfactor\$Env:REPO_NAME.zip -Force      
+           Compress-Archive -Path ${{ github.workspace }}\${{env.project_folder}}\bin\Release\*.dll,${{ github.workspace }}\${{env.project_folder}}\bin\Release\config.json -DestinationPath ${{ github.workspace }}\zip\Keyfactor\$Env:REPO_NAME.zip -Force      
       
       - name: Upload Release Asset (x64)
         if: ${{ success() }}
