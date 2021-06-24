@@ -1,7 +1,7 @@
 ﻿# Azure KeyVault
 ## Orchestrator
 
-The Azure KeyVault Orchestrator Integration allows a user to inventory, and manage (both add and remove) Azure Key Vault certificate stores.
+The Azure KeyVault Orchestrator allows for management of certificates within an Azure Key Vault. Inventory and Management functions are supported.
 
 <!-- add integration specific information below -->
 *** 
