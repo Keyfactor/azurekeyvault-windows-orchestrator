@@ -3,5 +3,6 @@
     "integration_type": "orchestrator",
     "name": "Azure KeyVault",
     "status": "public",
+    "link_github": true,
     "description": "The Azure KeyVault Orchestrator allows for management of certificates within an Azure Key Vault. Inventory and Management functions are supported."
 }
