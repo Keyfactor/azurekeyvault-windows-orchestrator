@@ -13,6 +13,7 @@ jobs:
           token: ${{ secrets.SDK_SYNC_PAT }}
           path: './catalog-temp/'
           repository: 'Keyfactor/integrations-catalog'
+          fetch-depth: 0
       
       - uses: cuchi/jinja2-action@v1.2.0
         with:
