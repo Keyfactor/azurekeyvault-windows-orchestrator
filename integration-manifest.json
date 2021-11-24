@@ -1,6 +1,6 @@
 {
     "$schema": "https://keyfactor.github.io/integration-manifest-schema.json",
-    "integration_type": "orchestrator",
+    "integration_type": "windows-orchestrator",
     "name": "Azure KeyVault",
     "status": "public",
     "link_github": true,
