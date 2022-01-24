@@ -132,6 +132,9 @@ Navigate to Certificate Locations =\> Certificate Stores within Keyfactor Comman
   2. Click on Access Policies
   3. Click add new
   4. Ensure it has the proper permissions
+
+<img src="Images/vault-perms.png" alt="Vault Perms" style="width:500px;"/>
+
   5. Select the application registered in (3) as the principal
   6. Click Ok
   7. Click Save
@@ -148,7 +151,6 @@ Navigate to Certificate Locations =\> Certificate Stores within Keyfactor Comman
 - While Azure Key Vault will automatically renew certs from DigiCert, GlobalSign, and D-Trust, they only send emails for certificates from other certificate providers
 - You have the option to specify that the key pair be generated as non-exportable and generated inside an HSM. If you do this then you cannot distribute your certificate and private key to your app nodes as illustrated in the end-to-end flow example above.
 - The Azure App Services platform periodically polls your key vault to check if there is an updated certificate. If it finds one it reads the new one and rebinds SSL/TLS for your app.
-- There are 
  ***
 
 ### License
