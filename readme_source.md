@@ -1,12 +1,4 @@
-﻿# {{ name }}
-## {{ integration_type | capitalize }}
-
-{{ description }}
-
-<!-- add integration specific information below -->
-*** 
-
-**1. Create the New Certificate Store Type for the New AKV AnyAgent**
+﻿**1. Create the New Certificate Store Type for the New AKV AnyAgent**
 
 In Keyfactor Command create a new Certificate Store Type similar to the one below:
 
