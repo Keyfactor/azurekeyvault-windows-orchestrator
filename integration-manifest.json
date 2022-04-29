@@ -2,7 +2,7 @@
     "$schema": "https://keyfactor.github.io/integration-manifest-schema.json",
     "integration_type": "windows-orchestrator",
     "name": "Azure KeyVault",
-    "status": "public",
+    "status": "production",
     "link_github": true,
     "description": "The Azure KeyVault Orchestrator allows for management of certificates within an Azure Key Vault. Inventory and Management functions are supported."
 }
