@@ -6,7 +6,7 @@ The Azure KeyVault Orchestrator allows for management of certificates within an 
 
 ## About the Keyfactor Windows Orchestrator AnyAgent
 
-This repository contains a Windows Orchestrator AnyAgent, which is a plugin to the Keyfactor Windows Orchestrator. Within the Keyfactor Platform, Orchestrators are used to manage “certificate stores” $mdash; collections of certificates and roots of trust that are found within and used by various applications.
+This repository contains a Windows Orchestrator AnyAgent, which is a plugin to the Keyfactor Windows Orchestrator. Within the Keyfactor Platform, Orchestrators are used to manage “certificate stores” &mdash; collections of certificates and roots of trust that are found within and used by various applications.
 
 The Windows Orchestrator is part of the Keyfactor software distribution and is available via the Keyfactor customer portal. For general instructions on installing AnyAgents, see the “Keyfactor Command Orchestrator Installation and Configuration Guide” section of the Keyfactor documentation. For configuration details of this specific AnyAgent, see below in this readme.
 
@@ -163,3 +163,4 @@ Navigate to Certificate Locations =\> Certificate Stores within Keyfactor Comman
 
 ### License
 [Apache](https://apache.org/licenses/LICENSE-2.0)
+
