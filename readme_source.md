@@ -1,4 +1,4 @@
-﻿## Setup and Configuration
+## Setup and Configuration
 
 The high level steps required to configure the Azure Keyvault Orchestrator extension are:
 
