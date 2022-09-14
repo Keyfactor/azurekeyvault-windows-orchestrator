@@ -10,11 +10,34 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E303EF59-E043-4F25-A1C4-5C29DA23EFF9}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Images\app-registration.PNG = Images\app-registration.PNG
 		AzureKeyVault.sln.licenseheader = AzureKeyVault.sln.licenseheader
+		Images\cert-mgmt-perm-list.PNG = Images\cert-mgmt-perm-list.PNG
+		Images\Image1.png = Images\Image1.png
+		Images\Image10.png = Images\Image10.png
+		Images\Image2.png = Images\Image2.png
+		Images\Image3.png = Images\Image3.png
+		Images\Image4.png = Images\Image4.png
+		Images\Image5.png = Images\Image5.png
+		Images\Image6.png = Images\Image6.png
+		Images\Image7.png = Images\Image7.png
+		Images\Image8.png = Images\Image8.png
+		Images\Image9.png = Images\Image9.png
 		integration-manifest.json = integration-manifest.json
 		LICENSE = LICENSE
+		Images\managed-app-link.png = Images\managed-app-link.png
+		Images\objectId.png = Images\objectId.png
 		README.md.tpl = README.md.tpl
-		rm.md = rm.md
+		readme_source.md = readme_source.md
+		Images\resource-group-add-role.PNG = Images\resource-group-add-role.PNG
+		Images\rg-role-select-principal.PNG = Images\rg-role-select-principal.PNG
+		Images\save-access-policy.PNG = Images\save-access-policy.PNG
+		Images\select-principal.PNG = Images\select-principal.PNG
+		Images\vault-perms.png = Images\vault-perms.png
+		Images\vault-rbac-final.png = Images\vault-rbac-final.png
+		Images\vault-rbac-kvadmin.png = Images\vault-rbac-kvadmin.png
+		Images\vault-rbac-principal.png = Images\vault-rbac-principal.png
+		Images\vault-rbac.png = Images\vault-rbac.png
 	EndProjectSection
 EndProject
 Global
