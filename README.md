@@ -96,11 +96,11 @@ Here are the steps for assigning this role.
      ![Select Principal](Images/rg-role-select-principal.PNG)
 1) Click "Review and Assign" and save the role assignment.
 
-[^1]: If discovery and create store functionality are not neeeded, it is also possible to manage individual certificate stores without the need to provide resource group level authority.  The steps to do assign permissions for an individual Azure Keyvault are described [here](#assign-permissions-for-an-individual-key-vault-via-access-policy) for vaults using Access Policy based permissions and [here](#assign-permissions-for-an-individual-key-vault-via-rbac) for Individual Key Vaults using Role-Based Access Control (RBAC).
+[^1]: It is also possible to manage individual certificate stores without the need to provide resource group level authority.  The steps to do assign permissions for an individual Azure Keyvault are described [here](#assign-permissions-for-an-individual-key-vault-via-access-policy) for vaults using Access Policy based permissions and [here](#assign-permissions-for-an-individual-key-vault-via-rbac) for Individual Key Vaults using Role-Based Access Control (RBAC).
 
 #### Assign Permissions for an Individual Key Vault via RBAC
 
-If you only need to manage a single instance of a Key Vault and do not require creation and discovery of new Key Vaults, you can provision access to the specific instance without needing to provide the service principal the "Keyvault Administrator" role at the resource group level.
+If you only need to manage a single instance of a Key Vault, you can provision access to the specific instance without needing to provide the service principal the "Keyvault Administrator" role at the resource group level.
 
 Follow the below steps in order to provide management access for our service principal to a specific instance of a Key Vault:
 
@@ -132,7 +132,7 @@ Follow the below steps in order to provide management access for our service pri
 #### Assign Permissions for an Individual Key Vault via Access Policy
 
 Access to an Azure Key Vault instance can be granted via Role Based Access Control (RBAC) or with class Azure Resource Access Policies.  The below steps are for provisioning access to a single 
-instance of a Key Vault using Access Policies.  If you are using RBAC at the resource group level (necessary for discovery and creating new Key Vaults via Keyfactor) we recommend following RBAC (above).  Alternatively, you will need to assign explicit permissions to the service principal for any Key Vault that is using Access Policy for Access Control if the Key Vault should be managed with Keyfactor.
+instance of a Key Vault using Access Policies.  If you are using RBAC at the resource group level we recommend following RBAC (above).  Alternatively, you will need to assign explicit permissions to the service principal for any Key Vault that is using Access Policy for Access Control if the Key Vault should be managed with Keyfactor.
 
 Following the below steps will provide our service principal with the ability to manage keys in an existing vault, without providing it the elevated permissions required for discovering existing vaults or creating new ones.  If you've completed the steps in the previous section for the resource group that contains the Key Vault(s) you would like to manage and the Key Vault(s) are using RBAC, the below steps are not necessary.
 
@@ -198,7 +198,7 @@ In Keyfactor Command create a new Certificate Store Type similar to the one belo
 - **Store PathType** – Freeform (user will enter the the location of the store). Format =\> [_VaultName_].vault.azure.net. See &quot;VaultName&quot; under &quot;Custom Parameters&quot; below.
 - **Private Keys** – Required (a certificate in a Azure Key Vault will contain a private key)
 - **PFX Password Style** – Default
-- **Job Types** – Inventory, Add, Remove, Create and Discovery are the job types implemented by this AnyAgent
+- **Job Types** – Inventory, Add and Remove are the job types implemented by this AnyAgent
 - **Custom Parameters** :
   - **TenantID** – Required **.** The ID of the Azure Active Directory (obtained from Properties menu of the subscription&#39;s Azure Active Directory – on this page it is called &quot;Directory ID&quot;)
   - **ResourceGroupName** – Required **.** The resource group name to which the Key Vault(s) belong. Can be found by clicking on the vault being managed and finding the &quot;Resource group&quot; at the top of the page.
@@ -272,62 +272,6 @@ Navigate to Certificate Locations =\> Certificate Stores within Keyfactor Comman
 - **VaultName** – Required **.** The name of the vault being managed.
 - **Create Certificate Store** – Unchecked **.**
 - **Inventory Schedule** – Set a schedule for running Inventory jobs or none, if you choose not to schedule Inventory at this time.
-
-### Discover Certificate Stores
-
-Now that we have the extension registered on the Orchestrator, we can navigate back to the Keyfactor platform and finish the setup.  If there are existing Azure Key Vaults, complete the below steps to discover and add them.  If there are no existing key vaults to integrate and you will be creating a new one via the Keyfactor Platform, you can skip to the next section.
-
-1) Navigate to Orchestrators > Management in the platform.
-
-     ![Manage Orchestrators](Images/orch-manage.png)
-
-1) Find the row corresponding to the orchestrator that we just installed the extension on.
-
-1) If the store type has been created and the integration installed on the orchestrator, you should see the _AKV_ capability in the list.
-
-     ![AKV Capability](Images/akv-capability.png)
-
-1) Approve the orchestrator if necessary.
-
-#### Create the discovery job
-
-1) Navigate to "Locations > Certificate Stores"
-
-     ![Locations Cert Stores](Images/locations-certstores.png)
-
-1) Click the "Discover" tab, and then the "Schedule" button.
-
-     ![Discovery Schedule](Images/discover-schedule.png)
-
-1) You should see the form for creating the Discovery job.
-
-     ![Discovery Form](Images/discovery-form.png)
-
-#### Approve the Certificate Store
-
-When the Discovery job runs successfully, it will list the existing Azure Keyvaults that are acessible by our service principal.
-
-In this example, our job returned four Azure Keyvaults.
-
-![Discovery Results](Images/discovery-result.png)
-
-The store path of each vault is the Azure Resource Identifier, and contains the following information:
-
-![Discovery Results](Images/storepath.png)
-
-To add one of these results to Keyfactor as a certificate store:
-
-1) Double-click the row that corresponds to the Azure Keyvault in the discovery results (you can also select the row and click "approve").
-
-1) In the dialog window, enter the Vault Name, Subscription ID and Resource Group Name from the store path value above.
-
-    ![Add discovered store](Images/add-discovered-store.png)
-
-1) Enter values for the other fields (TenantId, ApplicationId, ClientSecret, and APIObjectId) that we obtained when creating our service principal.
-
-1) Select a container to store the certificates for this cert store (optional)
-
-1) Click "SAVE".
 
 ***
 
