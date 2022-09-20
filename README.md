@@ -273,9 +273,63 @@ Navigate to Certificate Locations =\> Certificate Stores within Keyfactor Comman
 - **Create Certificate Store** – Unchecked **.**
 - **Inventory Schedule** – Set a schedule for running Inventory jobs or none, if you choose not to schedule Inventory at this time.
 
+### Discover Certificate Stores
+
+Now that we have the extension registered on the Orchestrator, we can navigate back to the Keyfactor platform and finish the setup.  If there are existing Azure Key Vaults, complete the below steps to discover and add them.  If there are no existing key vaults to integrate and you will be creating a new one via the Keyfactor Platform, you can skip to the next section.
+
+1) Navigate to Orchestrators > Management in the platform.
+
+     ![Manage Orchestrators](Images/orch-manage.png)
+
+1) Find the row corresponding to the orchestrator that we just installed the extension on.
+
+1) If the store type has been created and the integration installed on the orchestrator, you should see the _AKV_ capability in the list.
+
+     ![AKV Capability](Images/akv-capability.png)
+
+1) Approve the orchestrator if necessary.
+
+#### Create the discovery job
+
+1) Navigate to "Locations > Certificate Stores"
+
+     ![Locations Cert Stores](Images/locations-certstores.png)
+
+1) Click the "Discover" tab, and then the "Schedule" button.
+
+     ![Discovery Schedule](Images/discover-schedule.png)
+
+1) You should see the form for creating the Discovery job.
+
+     ![Discovery Form](Images/discovery-form.png)
+
+#### Approve the Certificate Store
+
+When the Discovery job runs successfully, it will list the existing Azure Keyvaults that are acessible by our service principal.
+
+In this example, our job returned four Azure Keyvaults.
+
+![Discovery Results](Images/discovery-result.png)
+
+The store path of each vault is the Azure Resource Identifier, and contains the following information:
+
+![Discovery Results](Images/storepath.png)
+
+To add one of these results to Keyfactor as a certificate store:
+
+1) Double-click the row that corresponds to the Azure Keyvault in the discovery results (you can also select the row and click "approve").
+
+1) In the dialog window, enter the Vault Name, Subscription ID and Resource Group Name from the store path value above.
+
+    ![Add discovered store](Images/add-discovered-store.png)
+
+1) Enter values for the other fields (TenantId, ApplicationId, ClientSecret, and APIObjectId) that we obtained when creating our service principal.
+
+1) Select a container to store the certificates for this cert store (optional)
+
+1) Click "SAVE".
 
 ***
-
 
 **Talking Points**
 
