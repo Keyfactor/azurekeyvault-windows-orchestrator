@@ -27,7 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE = LICENSE
 		Images\managed-app-link.png = Images\managed-app-link.png
 		Images\objectId.png = Images\objectId.png
-		README.md.tpl = README.md.tpl
 		readme_source.md = readme_source.md
 		Images\resource-group-add-role.PNG = Images\resource-group-add-role.PNG
 		Images\rg-role-select-principal.PNG = Images\rg-role-select-principal.PNG
