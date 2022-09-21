@@ -1,8 +1,22 @@
 {
-    "$schema": "https://keyfactor.github.io/integration-manifest-schema.json",
-    "integration_type": "windows-orchestrator",
-    "name": "Azure KeyVault",
-    "status": "production",
-    "link_github": true,
-    "description": "The Azure KeyVault Orchestrator allows for management of certificates within an Azure Key Vault. Inventory and Management functions are supported."
+  "$schema": "https://keyfactor.github.io/integration-manifest-schema.json",
+  "integration_type": "windows-orchestrator",
+  "name": "Azure KeyVault",
+  "status": "production",
+  "update_catalog": true,
+  "link_github": true,
+  "description": "The Azure KeyVault Orchestrator allows for management of certificates within an Azure Key Vault. Inventory and Management functions are supported."
+  "about": {
+    "orchestrator": {    
+      "win": {
+        "supportsCreateStore": false,
+        "supportsDiscovery": false,
+        "supportsManagementAdd": true,
+        "supportsManagementRemove": true,
+        "supportsReenrollment": false,
+        "supportsInventory": true,
+        "platformSupport": "Unused"
+      }
+    }
+  }
 }
