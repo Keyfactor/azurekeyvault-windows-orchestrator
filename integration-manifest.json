@@ -5,7 +5,7 @@
   "status": "production",
   "update_catalog": true,
   "link_github": true,
-  "description": "The Azure KeyVault Orchestrator allows for management of certificates within an Azure Key Vault. Inventory and Management functions are supported."
+  "description": "The Azure KeyVault Orchestrator allows for management of certificates within an Azure Key Vault. Inventory and Management functions are supported.",
   "about": {
     "orchestrator": {    
       "win": {
